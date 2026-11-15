@@ -1,131 +1,296 @@
-# CareCircle — Intelligent Elderly Care & Medication Management Platform
+# CareCircle — AI-Powered Elderly Care & Medication Management
 
-> **"Better care, connected families, healthier everyday living."**  
-> A unified, human-centred healthcare platform for seniors, family coordinators, and caregivers to manage medication adherence, doctor visits, and daily care routines.
+> **Better care, connected families, healthier everyday living.**
 
----
+CareCircle is an AI-powered elderly care coordination platform designed to simplify medication management, improve care visibility, and connect seniors with their families and caregivers through one accessible digital experience.
 
-## 🎯 Problem Statement
-Managing chronic medications and medical appointments for elderly individuals is complex and fragmented:
-- **Missed & Doubled Doses:** Over 50% of seniors with multiple prescriptions struggle with strict timing and confusing instructions.
-- **Caregiver Anxiety:** Family members constantly worry whether daily pills were taken, leading to repetitive checking and stress.
-- **Siloed Health Visits:** Clinical visits, specialist recommendations, and caregiver notes are scattered across paper slips and disjointed messaging apps.
+Instead of relying on scattered reminders, paper prescriptions, and repetitive phone calls, CareCircle brings everyday care activities together in one place.
 
-CareCircle resolves this by placing the senior at the center of their health routine while providing shared, role-permissioned visibility to family members and healthcare assistants.
+**One senior. One connected care circle. One smarter way to care.**
 
 ---
 
-## 🚀 Key Features
+## 🌍 The Problem
 
-1. **Daily Medication Adherence Engine**
-   - Active prescriptions with dosages, multi-time schedules, and clinical instructions.
-   - Real-time dose tracking: **Upcoming**, **Taken**, **Missed**, and **Skipped**.
-   - Dynamic adherence rates calculated live from recorded doses (no fake hardcoded stats).
+Managing healthcare routines for elderly individuals is often fragmented, stressful, and difficult to coordinate.
 
-2. **Doctor & Clinical Appointments**
-   - In-person and telehealth consultation scheduler.
-   - Pre-visit preparation notes and clinic location details.
-   - Categorized into upcoming consultations and past completed records.
+- **Medication non-adherence:** Seniors managing multiple prescriptions may forget doses, confuse schedules, or accidentally miss medications.
+- **Lack of care visibility:** Family members often have no reliable way to know whether medications were taken or daily care activities were completed.
+- **Disconnected caregivers:** Family members and in-home caregivers struggle to maintain a shared understanding of the senior's daily health routine.
+- **Fragmented medical information:** Appointment details, care observations, and medication instructions are often scattered across different platforms.
 
-3. **Family Care Circle**
-   - Role-based permissions for **Senior** (Meera Sharma), **Family Coordinator** (Ananya Sharma), and **In-Home Caregiver** (Ramesh Kumar).
-   - Shared Care Notes feed categorized into Wellness, Medication, and General observations.
-   - Real-time audit activity feed capturing all logged doses and scheduled appointments.
+### Our Solution
 
-4. **AI Care Assistant (Gemini + Deterministic Rule Engine)**
-   - Context-aware chatbot answering schedule questions based on current patient records.
-   - Pre-configured queries:
-     - *"Which medicines are due today?"*
-     - *"What doses were missed this week?"*
-     - *"What appointments are coming up?"*
-     - *"Summarize Meera's care activity."*
-     - *"Give me a weekly medication adherence summary."*
-   - Powered by Gemini 1.5 Flash when `GEMINI_API_KEY` is present.
-   - Seamless, intelligent deterministic fallback answering with real data when no API key is supplied.
+CareCircle creates a centralized, role-aware care coordination experience where seniors, family coordinators, and caregivers can manage daily routines, record medication activity, coordinate appointments, and access contextual AI assistance.
 
-5. **Smart Reminders & Interactive Email Preview**
-   - In-app notification center with read/unread status and dismiss controls.
-   - Email reminder dispatch via Resend API when `RESEND_API_KEY` is configured.
-   - Interactive demo preview mode rendering the full formatted HTML reminder payload when running without email credentials.
+---
 
-6. **Senior-Centric Accessibility**
-   - WCAG AAA compliance: Touch targets exceeding 44px.
-   - Dynamic typography scaling: Standard, Large, and Extra-Large font modes.
-   - High-contrast display mode for clear visual boundaries in any lighting condition.
+## ✨ Key Features
+
+### 1. Smart Medication Management
+- Maintain medication profiles with dosage and scheduling information.
+- Track individual doses as Upcoming, Taken, Missed, or Skipped.
+- Calculate medication adherence dynamically from recorded dose activity.
+- View daily medication schedules and relevant instructions.
+- Maintain a chronological medication activity history.
+
+### 2. Doctor Appointment Management
+- Schedule and manage medical appointments.
+- Support in-person and telehealth appointment records.
+- Store consultation details, preparation notes, and clinic information.
+- Separate upcoming appointments from completed visits.
+
+### 3. Connected Family Care Circle
+- Dedicated experiences for seniors, family coordinators, and caregivers.
+- Role-aware access to relevant care activities.
+- Shared care notes categorized by Wellness, Medication, and General observations.
+- Activity timeline documenting important care events.
+- Improved visibility into everyday caregiving responsibilities.
+
+### 4. AI-Powered Care Assistant
+CareCircle includes a contextual AI assistant designed to help users understand existing care records.
+
+**Example questions:**
+- Which medicines are due today?
+- What doses were missed this week?
+- What appointments are coming up?
+- Summarize Meera's recent care activity.
+- Give me a weekly medication adherence summary.
+
+**AI architecture:**
+- Google Gemini integration when `GEMINI_API_KEY` is configured.
+- Deterministic rule-based fallback for supported queries when the API is unavailable.
+- Contextual responses based on available application records.
+
+The assistant is designed for care coordination, not medical diagnosis or independent treatment recommendations.
+
+### 5. Smart Notifications & Email Reminders
+- In-app notification center.
+- Read/unread notification management.
+- Dismissible reminders.
+- Optional email delivery through Resend.
+- Interactive email preview when live email credentials are unavailable.
+
+### 6. Accessibility-First Experience
+Designed to make everyday interaction easier for elderly users.
+
+- Adjustable typography: Standard, Large, and Extra-Large.
+- High-contrast display mode.
+- Large, accessible interactive controls.
+- Clear navigation and readable information hierarchy.
+- Responsive layouts for desktop, tablet, and mobile devices.
+
+---
+
+## 👥 Demo Accounts
+
+Explore CareCircle through three demonstration personas.
+
+| Persona | Name | Role | Demo PIN |
+|---|---|---|---|
+| Senior | Meera Sharma | Senior | `1234` |
+| Family Coordinator | Ananya Sharma | Family Member | `2345` |
+| Caregiver | Ramesh Kumar | Caregiver | `3456` |
+
+Each account demonstrates a different caregiving perspective and its corresponding application permissions.
+
+**Note:** These are demonstration credentials for the prototype, not production authentication accounts.
 
 ---
 
 ## 🛠️ Technology Stack
-- **Framework:** Next.js 14.2.35 (App Router, Node.js runtime)
-- **Library:** React 18, TypeScript 5
-- **Styling:** CSS3 Custom Design System (deep navy, teal, mint, warm off-white)
-- **Persistence:** Browser `localStorage` with schema validation and demo reset
-- **AI Engine:** Google Gemini API (`@google/generative-ai` REST endpoint) with rule-based fallback
-- **Email Delivery:** Resend REST API with interactive preview mode
-- **Deployment:** Vercel ready
+
+| Layer | Technologies |
+|---|---|
+| Frontend | Next.js 14, React 18 |
+| Language | TypeScript |
+| Routing | Next.js App Router |
+| Styling | CSS3, Custom Design System |
+| State Management | React Context API |
+| Persistence | Browser localStorage |
+| AI Integration | Google Gemini API |
+| AI Fallback | Deterministic Rule Engine |
+| Email Integration | Resend API |
+| Deployment | Vercel |
 
 ---
 
-## 🔑 Demo Accounts & PINs
+## 🏗️ Application Architecture
 
-| Persona | Name | Role | PIN | Relationship & Access |
-| :--- | :--- | :--- | :---: | :--- |
-| **Senior** | Meera Sharma | Senior | `1234` | Full management of medications, doses, and visits. |
-| **Family Member** | Ananya Sharma | Family Member | `2345` | Daughter & Primary Care Coordinator; can add/edit meds & visits. |
-| **Caregiver** | Ramesh Kumar | Caregiver | `3456` | Certified Healthcare Assistant; can log administered doses and care notes. |
+```text
+                    CARECIRCLE
+                         |
+              Next.js Application
+                         |
+          +--------------+--------------+
+          |              |              |
+       Senior          Family        Caregiver
+      Interface      Coordinator     Interface
+          |              |              |
+          +--------------+--------------+
+                         |
+                 Central State Store
+                  (React Context)
+                         |
+          +--------------+--------------+
+          |              |              |
+      Medication     Appointments     Care Notes
+       Tracking       Management      & Activity
+          |              |              |
+          +--------------+--------------+
+                         |
+                  AI Care Assistant
+                         |
+             +-----------+-----------+
+             |                       |
+         Gemini API           Rule-Based Fallback
+             |
+        Contextual Insights
+                         |
+                Notification Layer
+                         |
+                 Resend Integration
+```
 
 ---
 
-## 💻 Installation & Local Development
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js 18 or later.
+- npm.
+- Git.
+
+### Installation
+
+Clone the repository:
 
 ```bash
-# 1. Navigate to the project directory
-cd "C:\Users\MUSKAN KUMARI\OneDrive\Desktop\cat\Catalyst-CareCircle-Fresh"
+git clone https://github.com/Muskankr/carecircle-elderly-care.git
+```
 
-# 2. Install dependencies
+Navigate into the project:
+
+```bash
+cd carecircle-elderly-care
+```
+
+Install dependencies:
+
+```bash
 npm install
+```
 
-# 3. Start local development server
+Start the development server:
+
+```bash
 npm run dev
+```
 
-# 4. Open in browser
+Open your browser:
+
+```text
 http://localhost:3000
 ```
 
----
+### Production Build
 
-## ⚙️ Environment Variables (Optional)
+Verify the production build:
 
-Copy `.env.example` to `.env.local` to enable external cloud capabilities:
-
-```dotenv
-# Optional: Google Gemini API Key for generative care insights
-GEMINI_API_KEY=your_gemini_api_key_here
-
-# Optional: Resend API Key for live email notifications
-RESEND_API_KEY=your_resend_api_key_here
-REMINDER_FROM_EMAIL=onboarding@resend.dev
-```
-
-*Note: The application operates completely and reliably without any environment variables.*
-
----
-
-## 🔒 Prototype Security Notice
-This application is designed as a hackathon demonstration. PIN authentication and patient records are stored locally in the browser's `localStorage` for quick demonstration without requiring external database setups. In a production healthcare environment, this would be replaced with OAuth2/OIDC, encrypted database storage, and HIPAA/GDPR-compliant access controls.
-
----
-
-## 🚢 Production Build & Deployment
-
-### Build Command:
 ```bash
 npm run build
 ```
 
-### Deploy to Vercel:
+Start the production server:
+
 ```bash
-# Using Vercel CLI
-npx vercel
+npm start
 ```
-Or connect the repository on [vercel.com](https://vercel.com) and deploy directly.
+
+---
+
+## 🔐 Environment Configuration
+
+CareCircle supports optional external integrations.
+
+Create a `.env.local` file in the project root:
+
+```env
+# Google Gemini integration
+GEMINI_API_KEY=your_gemini_api_key
+
+# Resend email integration
+RESEND_API_KEY=your_resend_api_key
+REMINDER_FROM_EMAIL=onboarding@resend.dev
+```
+
+The application should retain its supported core functionality without these optional credentials through its fallback and preview modes.
+
+**Security:** Never commit `.env.local` or expose API keys in frontend code or public repositories.
+
+---
+
+## 🔒 Security & Privacy
+
+CareCircle is currently a hackathon prototype using browser-based localStorage persistence and demonstration PIN authentication.
+
+It is not intended for storing real patient records or managing actual medical treatment.
+
+A production implementation would require:
+
+- Secure authentication and session management.
+- Server-side authorization and role enforcement.
+- Encrypted storage and secure API communication.
+- Auditable access controls.
+- Appropriate healthcare privacy and regulatory compliance.
+- Reliable backups and data recovery.
+
+---
+
+## 🔮 Future Roadmap
+
+CareCircle has the potential to evolve into a more comprehensive elderly care ecosystem.
+
+Planned possibilities include:
+
+- **Caregiver alerts:** Escalation workflows for missed medication events.
+- **Voice-first interaction:** Easier access for seniors with limited digital literacy.
+- **Family synchronization:** Secure cloud-based updates across multiple devices.
+- **Prescription assistance:** Structured prescription uploads and medication information extraction.
+- **Advanced analytics:** Long-term adherence trends and care activity reports.
+- **Wearable integrations:** Incorporating relevant activity and wellness information.
+
+---
+
+## 💡 Why CareCircle?
+
+CareCircle is built around an important idea:
+
+**Elderly care should not depend on one person's memory or constant availability.**
+
+By connecting medication tracking, family coordination, appointment management, and contextual AI assistance, CareCircle aims to make everyday caregiving more organized, transparent, and accessible.
+
+Technology should not replace human care. It should make caring for people easier.
+
+---
+
+## 👩‍💻 Built By
+
+**Muskan Kumari**
+
+B.Tech Computer Science & Engineering (AI & ML)
+
+GitHub: [@Muskankr](https://github.com/Muskankr)
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License. See the `LICENSE` file for details.
+
+---
+
+<p align="center">
+  <strong>CareCircle — Because better care begins with connection. ❤️</strong>
+</p>
